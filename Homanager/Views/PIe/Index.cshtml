@@ -1,0 +1,127 @@
+﻿@model IEnumerable<Homanager.ViewModels.UsersGroupCountModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>@User.Identity.Name Groups Statistics</h2>
+
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                @Html.DisplayNameFor(model => model.UserEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GroupsCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GroupsCount)
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="stat-chart">
+    <div id="tooltip"></div>
+    <div class="pie"></div>
+    <div>
+        <a asp-controller="Home" asp-action="Stats" class="btn btn-default">Back to Stats</a>
+    </div>
+</div>
+
+
+<script src="https://d3js.org/d3.v4.min.js"></script>
+<script>
+
+    // draw a pie
+    function drawPie(jsonData) {
+
+        // height and width of the svg
+        var h = 400;
+        var w = 400;
+
+        // inner and outer radius of the pie
+        var innerRadius = w / 4;
+        var outerRadius = w / 2;
+
+
+        // generate pie as function to be called and handel data
+        var pie = d3.pie().value(function (d) {
+            return d.groupsCount;
+        });
+
+        // create the color schim, d3 does that for us, generates 10 scale ordnal
+        var color = d3.schemeCategory10;
+
+        // will be used to generate the path attribute
+        var arc = d3.arc()
+            .innerRadius(innerRadius)
+            .outerRadius(outerRadius);
+
+        // create the svg canvas
+        var svg = d3.select(".pie")
+            .append("svg")
+            .attr('width', w)
+            .attr('height', h);
+
+        // set up groups of arcs
+        var arcs = svg.selectAll("g.arc")
+            .data(pie(jsonData))
+            .enter()
+            .append("g")
+            .attr("class", "arc")
+            .attr("transform", "translate(" + outerRadius + ', ' + outerRadius + ")")
+            .on("mouseover", function (d) {
+                d3.select('#tooltip')
+                    .style("visibility", "visible")
+                    .text("UserEmail: " + d.data.userEmail);
+            })
+            .on("mousemove", function () {
+                d3.select('#tooltip')
+                    .style("top", (event.pageY - 10) + "px")
+                    .style("left", (event.pageX + 10) + "px");
+            })
+            .on("mouseout", function () {
+                d3.select('#tooltip')
+                    .style("visibility", "hidden");
+            });
+
+        // add path to groups
+        arcs.append('path')
+            .attr('fill', function (d, i) {
+                return color[i];
+            })
+            .attr('d', arc);
+
+        // append text
+        arcs.append('text')
+            .attr("transform", function (d) {
+                return "translate(" + arc.centroid(d) + ")"; // get the center point of the shape
+            })
+            .attr("text-anchor", "middle")
+            .text(function (d) {
+                return d.value;
+            });
+
+    }
+
+    var userGroupsStatistics = @Html.Raw(Json.Serialize(Model));
+    drawPie(userGroupsStatistics);
+
+
+
+</script>

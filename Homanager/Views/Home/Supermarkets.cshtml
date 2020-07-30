@@ -1,0 +1,24 @@
+﻿@model List<Supermarket>
+@{
+    ViewData["Title"] = "Supermarkets";
+}
+
+<script src="~/js/site.js" type="text/javascript"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCw29BzjBZlxmEd_K3jMN1RPgO_hRE9FD8&libraries=places&callback=initAutocomplete" async defer></script>
+<header> <h1>Supermarkets</h1></header>
+
+<body onload="gettingJSON()">
+    <table align="right">
+        <tr>
+            <td id="weatherIcon"></td>
+            <td id="weather"></td>
+        </tr>
+
+    </table>
+    <!--<input id="pac-input" class="controls" type="text" placeholder="Search">-->
+    <div id="map"></div>
+    <script type="text/javascript">
+        var ourData = @Html.Raw(Json.Serialize(Model));
+    </script>
+</body>
+

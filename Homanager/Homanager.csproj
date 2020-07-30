@@ -1,0 +1,88 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <UserSecretsId>aspnet-Homanger-CF9C0D49-5967-4BA7-9A51-313A55254411</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20181031182433_FirstMigration.cs" />
+    <Compile Remove="Migrations\20181031182433_FirstMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181031203917_AddedCartsToGroup.cs" />
+    <Compile Remove="Migrations\20181031203917_AddedCartsToGroup.Designer.cs" />
+    <Compile Remove="Migrations\20181031212102_UpdateCartFieldTypeAndName.cs" />
+    <Compile Remove="Migrations\20181031212102_UpdateCartFieldTypeAndName.Designer.cs" />
+    <Compile Remove="Migrations\20181031220016_RemoveCartsGroupRequired.cs" />
+    <Compile Remove="Migrations\20181031220016_RemoveCartsGroupRequired.Designer.cs" />
+    <Compile Remove="Migrations\20181101193941_SupermarketsMigration.cs" />
+    <Compile Remove="Migrations\20181101193941_SupermarketsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181101194335_SupermarketsMigration.cs" />
+    <Compile Remove="Migrations\20181101194335_SupermarketsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181101200549_ProductsMigration.cs" />
+    <Compile Remove="Migrations\20181101200549_ProductsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181101200954_ProductsMigration.cs" />
+    <Compile Remove="Migrations\20181101200954_ProductsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102003401_GroupsRepairMig.cs" />
+    <Compile Remove="Migrations\20181102003401_GroupsRepairMig.Designer.cs" />
+    <Compile Remove="Migrations\20181102010031_RepairGroupMigration.cs" />
+    <Compile Remove="Migrations\20181102010031_RepairGroupMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102011502_RepairGroupMigration.cs" />
+    <Compile Remove="Migrations\20181102011502_RepairGroupMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102011606_RepairGroupMigration.cs" />
+    <Compile Remove="Migrations\20181102011606_RepairGroupMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102101521_SupermarketsAndGroupsMigration.cs" />
+    <Compile Remove="Migrations\20181102101521_SupermarketsAndGroupsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102101937_SupermarketsAndGroupsMigration.cs" />
+    <Compile Remove="Migrations\20181102101937_SupermarketsAndGroupsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102102439_SupermarketsAndGroupsMigration.cs" />
+    <Compile Remove="Migrations\20181102102439_SupermarketsAndGroupsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102102629_SupermarketsAndGroupsMigration.cs" />
+    <Compile Remove="Migrations\20181102102629_SupermarketsAndGroupsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102102946_SupermarketsAndGroupsMigration.cs" />
+    <Compile Remove="Migrations\20181102102946_SupermarketsAndGroupsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102103328_SupermarketsAndGroupsMigration.cs" />
+    <Compile Remove="Migrations\20181102103328_SupermarketsAndGroupsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102104918_FirstMigration.cs" />
+    <Compile Remove="Migrations\20181102104918_FirstMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102112552_FirstMigration.cs" />
+    <Compile Remove="Migrations\20181102112552_FirstMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181102145621_MigrationInit.cs" />
+    <Compile Remove="Migrations\20181102145621_MigrationInit.Designer.cs" />
+    <Compile Remove="Migrations\20181103193906_RolesMigration.cs" />
+    <Compile Remove="Migrations\20181103193906_RolesMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181103200141_FixedRolesMigration.cs" />
+    <Compile Remove="Migrations\20181103200141_FixedRolesMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181104192009_RolesMigration.cs" />
+    <Compile Remove="Migrations\20181104192009_RolesMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181104232743_ProductsMigration.cs" />
+    <Compile Remove="Migrations\20181104232743_ProductsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181104233625_ProductsMigration2.cs" />
+    <Compile Remove="Migrations\20181104233625_ProductsMigration2.Designer.cs" />
+    <Compile Remove="Migrations\20181104234957_ProductsMig2.cs" />
+    <Compile Remove="Migrations\20181104234957_ProductsMig2.Designer.cs" />
+    <Compile Remove="Migrations\20181104235502_ProductsMigration.cs" />
+    <Compile Remove="Migrations\20181104235502_ProductsMigration.Designer.cs" />
+    <Compile Remove="Migrations\20181104235618_ProductsMigration.cs" />
+    <Compile Remove="Migrations\20181104235618_ProductsMigration.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Accord.MachineLearning" Version="3.8.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.5" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Home\Stats.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\Supermarkets.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Bar\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

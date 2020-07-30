@@ -1,0 +1,49 @@
+﻿@model Homanager.Models.Group
+
+@{
+    ViewData["Title"] = "Users";
+}
+
+
+<h2>Users</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(item => item.Owner.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.Owner.FirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(item => item.Owner.LastName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Participants.Select(i => i.User).Where(i => i != null))
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+                <td>
+                    <a asp-action="RemoveUserFromGroup" asp-route-userId="@item.Id" asp-route-groupId="@Model.GroupId" class="btn btn-danger">Remove</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div class="btn-group">
+    <a asp-action="AddUser" asp-route-id="@Model.GroupId" class="btn btn-default">Add User</a>
+    <a asp-action="Index" class="btn btn-default">Back to List</a>
+</div>
+

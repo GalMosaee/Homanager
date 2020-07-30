@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Homanager.Models.Cart>
+
+@{
+    ViewData["Title"] = "Carts";
+}
+
+<h2>Carts</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">Create new cart</a>
+</p>
+
+<form asp-controller="GroupCarts" asp-route-groupId="@ViewData["GroupId"]">
+    <p>
+        <div class="row">
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text" id="">Cart Name:</span>
+                    </div>
+                    <input type="text" class="form-control" name="CartName" placeholder="Cart Name" />
+                </div>
+            </div>
+            <div class="col-xs-3">
+                <div class="input-group">
+                    <div class="input-group-addon">
+                        <span class="input-group-text" id="">Created After:</span>
+                    </div>
+                    <input type="date" class="form-control" name="DateOpened" />
+                </div>
+            </div>
+            <div class="col-xs-1">
+                <div class="input-group">
+                    <input type="submit" class="btn" value="Filter" />
+                </div>
+            </div>
+        </div>
+</form>
+
+<!--Create part-->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOpened)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OwnerGroup)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOpened)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.OwnerGroup.Name)
+                </td>
+                <td>
+                    <div class="btn-group">
+                        <a asp-controller="CartProducts" asp-action="Edit" asp-route-cartId="@item.CartId" class="btn btn-info">Edit</a>
+                        <a asp-action="Delete" asp-route-id="@item.CartId" class="btn btn-info">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Groups" asp-action="Index" class="btn btn-default">Back to List</a>
+</div>

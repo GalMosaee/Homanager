@@ -1,0 +1,52 @@
+﻿@model Homanager.Models.Cart
+
+@{
+    ViewData["Title"] = "Cart Products";
+}
+
+<h2>Cart Products</h2>
+
+<p>
+    <a asp-controller="GroupCarts" asp-action="Edit" asp-route-id="@Model.CartId" asp-route-groupId="@Model.OwnerGroupId" class="btn btn-success">Edit cart list</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.Label("Product")
+            </th>
+            <th>
+                @Html.Label("Quantity")
+            </th>
+            <th>
+                @Html.Label("Comment")
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.CartProducts)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ProductName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comment)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<div>
+    <a asp-controller="GroupCarts" asp-action="Index" asp-route-groupId="@Model.OwnerGroupId" class="btn btn-default">Back to List</a>
+</div>
